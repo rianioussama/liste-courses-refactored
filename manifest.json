@@ -1,0 +1,41 @@
+import { renderApp } from "./render.js";
+import { loadState, saveState } from "./state.js";
+import { state, applyAction } from "./actions.js";
+
+const searchInput = document.getElementById("searchInput");
+const navButtons = document.querySelectorAll(".nav-btn");
+
+searchInput.addEventListener("input", (event) => {
+  state.query = event.target.value.trim().toLowerCase();
+  saveState(state);
+  renderApp(state);
+});
+
+navButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    applyAction("set-view", { view: button.dataset.view });
+  });
+});
+
+document.addEventListener("click", (event) => {
+  const actionNode = event.target.closest("[data-action]");
+  if (!actionNode) return;
+
+  const action = actionNode.dataset.action;
+  const id = actionNode.dataset.id;
+  const delta = actionNode.dataset.delta;
+  const day = actionNode.dataset.day;
+  const slot = actionNode.dataset.slot;
+  const value = actionNode.dataset.value;
+
+  if (action === "toggle-favorite") return applyAction("toggle-favorite", { id });
+  if (action === "toggle-list") return applyAction("toggle-list", { id });
+  if (action === "adjust-quantity") return applyAction("adjust-quantity", { id, delta });
+  if (action === "toggle-purchased") return applyAction("toggle-purchased", { id });
+  if (action === "toggle-category") return applyAction("toggle-category", { id });
+  if (action === "reset-selection") return applyAction("reset-selection");
+  if (action === "set-menu-meal") return applyAction("set-menu-meal", { day, slot, value: actionNode.value });
+  if (action === "toggle-menu-day") return applyAction("toggle-menu-day", { day });
+});
+
+renderApp(state);

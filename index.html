@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SmartCourses</title>
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/layout.css" />
+    <link rel="stylesheet" href="./css/components.css" />
+    <link rel="stylesheet" href="./css/responsive.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <div class="brand">SmartCourses</div>
+          <div class="brand-subtitle" id="subtitle">Catalogue</div>
+        </div>
+
+        <div class="header-tools">
+          <input
+            id="searchInput"
+            type="search"
+            placeholder="Rechercher un produit..."
+            aria-label="Rechercher un produit"
+          />
+
+          <nav class="nav" aria-label="Navigation principale">
+            <button id="catalogBtn" class="nav-btn is-active" data-view="catalog">Catalogue</button>
+            <button id="storeBtn" class="nav-btn" data-view="store">Courses</button>
+            <button id="menuBtn" class="nav-btn" data-view="menu">Menu</button>
+            <button id="budgetBtn" class="nav-btn" data-view="budget">Budget</button>
+          </nav>
+        </div>
+      </header>
+
+      <main id="app" class="app"></main>
+    </div>
+
+    <script type="module" src="./js/app.js"></script>
+  </body>
+</html>

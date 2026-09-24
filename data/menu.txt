@@ -1,0 +1,22 @@
+Fruits & légumes:
+Pommes
+Bananes
+Carottes
+Salade
+Tomates
+
+Produits laitiers:
+Lait
+Yaourt
+Fromage
+Beurre
+
+Boulangerie:
+Pain
+Baguettes
+Croissants
+
+Nettoyage:
+Lessive
+Vaisselle
+Detergent
